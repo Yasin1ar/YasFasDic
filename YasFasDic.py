@@ -3,23 +3,32 @@ from sys import argv
 
 
 def main(word: str) -> None:
+    # API URL for the dictionary API
     API = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
+    # Get the response from the API
     res = rq.get(API).json()[0]
 
+    # Function to get the phonetic of the given list
     def get_phonetic(given_list: list) -> str:
         for i in range(len(given_list)):
             if "text" in given_list[i].keys():
                 return given_list[i]["text"]
 
     try:
+        # Get the definition of the word
         definition = res["meanings"][0]["definitions"][0]["definition"]
+        # Get the part of speech of the word
         partOfSpeech = res["meanings"][0]["partOfSpeech"]
+        # Get the phonetic of the word
         phonetic = get_phonetic(res["phonetics"])
+        # Get the word itself
         word_itself = res["word"]
     except:
+        # If the word is not found in the dictionary, print the error message
         print(f"The Word '{word}' not found in the dictionary")
         return None
 
+    # Print the output
     print("\n" * 2)
     print("-" * 50)
 
@@ -33,20 +42,28 @@ def main(word: str) -> None:
 
 
 if __name__ == "__main__":
+    # Print the welcome message
     print(
         "\n Welcome to YasFasDic, Insert anything to get the definition\n Enter nothing"
         " to exit the program ",
         end="\n" * 5,
     )
 
+    # If there are more than one argument, loop through them
     if len(argv) > 1:
         for arg in argv[1:]:
             main(arg)
 
+    # While loop to keep the program running
     while True:
+        # Get the user input
         words = input("Please Enter a word or phrase :>> ")
+        # If the user input is empty, exit the program
         if words == "":
             exit()
+        # Split the user input into words
         words = words.strip().split(" ")
+        # Loop through the words
         for word in words:
+            # Call the main function with the word
             main(word.strip())
