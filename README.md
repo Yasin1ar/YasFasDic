@@ -5,7 +5,7 @@
 ![using YasFasDic in command line](YasFasDic.png)
 ##### *using YasFasDic in command line*
 
-### like any other regular python file, you can run it directly in terminal/cmd **python YasFasDic.py**, it has an interactive interface, then it kindly asks you to enter a word or words, then serves you definition, part of speech and it's pronunciation.
+### like any other regular python file, you can run it directly in terminal/cmd **python YasFasDic.py**, it has an interactive interface, then it kindly asks you to enter a word or words, then serves you definition, part of speech and it's pronunciation. or simply enter nothing to exit the program (faster than ctrl^C by the way).
 &nbsp;
 
 ### you can also give the words as an argument for convenient, e.x ***python YasFasDic.py book car dress monkey***  **...**  .

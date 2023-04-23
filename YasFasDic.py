@@ -6,7 +6,11 @@ def main(word: str) -> None:
     # API URL for the dictionary API
     API = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
     # Get the response from the API
-    res = rq.get(API).json()[0]
+    try:
+        res = rq.get(API).json()[0]
+    except:
+        print("Network Error, Please be sure that your network connection is valid.")
+        return None
 
     # Function to get the phonetic of the given list
     def get_phonetic(given_list: list) -> str:
