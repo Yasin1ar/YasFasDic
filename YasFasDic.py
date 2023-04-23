@@ -29,24 +29,23 @@ def main(word: str) -> None:
         return None
 
     # Print the output
-    print("\n" * 2)
+    print("\n")
+    print("\033[1m" + "The Word : " + word_itself + "\033[0m")
     print("-" * 50)
-
-    print("The Word : ", word_itself)
     print("Definition : ", definition)
     print("Part Of Speech : ", partOfSpeech)
-    print("Pronunciation", phonetic)
+    print("Pronunciation : ", phonetic)
 
     print("-" * 50)
-    print("\n" * 2)
+    print("\n")
 
 
 if __name__ == "__main__":
     # Print the welcome message
     print(
-        "\n Welcome to YasFasDic, Insert anything to get the definition\n Enter nothing"
-        " to exit the program ",
-        end="\n" * 5,
+        "\033[1m" + "\nWelcome to YasFasDic, "
+        "Insert anything to get the definition\nEnter nothing to exit the program " + "\033[0m",
+        end="\n" * 3,
     )
 
     # If there are more than one argument, loop through them
