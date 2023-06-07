@@ -8,8 +8,11 @@ def main(word: str) -> None:
     # Get the response from the API
     try:
         res = rq.get(API).json()[0]
-    except:
+    except rq.exceptions.ConnectionError:
         print("Network Error, Please be sure that your network connection is valid.")
+        return None
+    except KeyError:
+        print(f"There is no word '{word}' in the database dictionary!")
         return None
 
     # Function to get the phonetic of the given list
@@ -48,7 +51,8 @@ if __name__ == "__main__":
     # Print the welcome message
     print(
         "\033[1m" + "\nWelcome to YasFasDic, "
-        "Insert anything to get the definition\nEnter nothing to exit the program " + "\033[0m",
+        "Insert anything to get the definition\nEnter nothing to exit the program "
+        + "\033[0m",
         end="\n" * 3,
     )
 
